@@ -1,0 +1,6 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" style="@style/MindCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:backgroundTint="@color/soft_grey">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <TextView android:id="@+id/titleText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/jet_black" android:textSize="17sp" android:textStyle="bold" />
+        <TextView android:id="@+id/subtitleText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/muted_text" android:textSize="14sp" android:layout_marginTop="6dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

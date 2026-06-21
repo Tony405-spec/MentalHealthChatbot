@@ -1,0 +1,7 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/profileRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="20dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Profile" android:textColor="@color/jet_black" android:textSize="24sp" android:textStyle="bold" />
+    <TextView android:id="@+id/emailText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/muted_text" android:layout_marginTop="8dp" />
+    <Switch android:id="@+id/themeSwitch" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Grey theme" android:textColor="@color/jet_black" android:layout_marginTop="24dp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/reminderButton" android:layout_width="match_parent" android:layout_height="56dp" android:text="Schedule wellness reminder" android:backgroundTint="@color/jet_black" android:textColor="@color/white" android:layout_marginTop="16dp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/logoutButton" android:layout_width="match_parent" android:layout_height="56dp" android:text="Sign out" android:textColor="@color/jet_black" android:backgroundTint="@color/soft_grey" android:layout_marginTop="12dp" />
+</LinearLayout>

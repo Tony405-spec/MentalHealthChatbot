@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_dashboard" android:icon="@android:drawable/ic_menu_compass" android:title="Home" />
+    <item android:id="@+id/nav_mood" android:icon="@android:drawable/ic_menu_myplaces" android:title="Mood" />
+    <item android:id="@+id/nav_journal" android:icon="@android:drawable/ic_menu_edit" android:title="Journal" />
+    <item android:id="@+id/nav_articles" android:icon="@android:drawable/ic_menu_info_details" android:title="Tips" />
+    <item android:id="@+id/nav_chat" android:icon="@android:drawable/ic_menu_send" android:title="Care AI" />
+</menu>

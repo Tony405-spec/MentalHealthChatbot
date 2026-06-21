@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MindCare</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="signin_subtitle">Sign in to continue your care journey.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_account">Create account</string>
+    <string name="already_have_account">I already have an account</string>
+    <string name="start_ritual">Start a calmer daily check-in ritual.</string>
+    <string name="error_invalid_email">Enter a valid email</string>
+    <string name="error_weak_password">Use at least 6 characters</string>
+</resources>
