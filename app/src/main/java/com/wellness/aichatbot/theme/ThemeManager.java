@@ -69,10 +69,12 @@ public class ThemeManager {
             tv.setTextColor(palette.text);
             
             Typeface current = tv.getTypeface();
-            boolean isBold = current != null && current.isBold();
+            boolean isBold = current != null && (current.isBold() || tv.getTextSize() > 20);
             
-            if (isDashboard || isBold) {
-                if (fontRegular != null) tv.setTypeface(fontRegular, isBold ? Typeface.BOLD : Typeface.NORMAL);
+            if (isBold) {
+                if (fontRegular != null) tv.setTypeface(fontRegular, Typeface.BOLD);
+            } else if (isDashboard) {
+                if (fontRegular != null) tv.setTypeface(fontRegular, Typeface.NORMAL);
             } else {
                 if (fontLight != null) tv.setTypeface(fontLight);
             }
@@ -80,18 +82,16 @@ public class ThemeManager {
         if (view instanceof EditText) {
             EditText editText = (EditText) view;
             editText.setTextColor(Color.rgb(18, 18, 18));
-            editText.setHintTextColor(Color.rgb(96, 96, 96));
-            if (isDashboard) {
-                if (fontRegular != null) editText.setTypeface(fontRegular);
-            } else {
-                if (fontLight != null) editText.setTypeface(fontLight);
-            }
+            editText.setHintTextColor(Color.rgb(120, 120, 120));
+            if (fontLight != null) editText.setTypeface(fontLight);
         }
         if (view instanceof MaterialCardView) {
             MaterialCardView card = (MaterialCardView) view;
             card.setCardBackgroundColor(palette.card);
             card.setStrokeColor(palette.secondary);
-            card.setStrokeWidth(1);
+            card.setStrokeWidth(2); // Slightly thicker professional border
+            card.setRadius(dp(view.getContext(), 4)); // Sharp IBM-style corners
+            card.setCardElevation(0); // Flat design for IBM feel
         }
         if (view instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) view;
@@ -99,6 +99,10 @@ public class ThemeManager {
                 applyToChildren(group.getChildAt(i), palette, fontRegular, fontLight, isDashboard);
             }
         }
+    }
+
+    private static int dp(Context context, int value) {
+        return (int) (value * context.getResources().getDisplayMetrics().density);
     }
 
     private static SharedPreferences prefs(Context context) {

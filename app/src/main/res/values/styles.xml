@@ -1,10 +1,29 @@
 <resources>
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Technical IBM Foundation -->
         <item name="android:fontFamily">@font/roboto_mono</item>
         <item name="fontFamily">@font/roboto_mono</item>
+
+        <!-- High Contrast Palette -->
         <item name="colorPrimary">@color/jet_black</item>
-        <item name="colorPrimaryContainer">@color/alabaster</item>
-        <item name="colorSecondary">@color/sage</item>
+        <item name="colorPrimaryContainer">@color/soft_gray_shadow</item>
+        <item name="colorOnPrimary">@color/blanc_white</item>
+        <item name="colorSecondary">@color/calm_blue</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Sharp Component Geometry -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">2dp</item>
+    </style>
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">4dp</item>
+    </style>
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">4dp</item>
     </style>
 </resources>
