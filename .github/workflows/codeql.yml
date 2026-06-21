@@ -1,23 +1,12 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
-#
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
-#
-# ******** NOTE ********
-# We have attempted to detect the languages in your repository. Please check
-# the `language` matrix defined below to confirm you have the correct set of
-# supported CodeQL languages.
-
 name: "CodeQL Advanced - Mindful Support"
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '32 5 * * 3'  # Weekly: Wednesday at 5:32 AM UTC
+    - cron: '32 5 * * 3'
 
 jobs:
   analyze:
@@ -34,36 +23,35 @@ jobs:
       matrix:
         include:
         - language: java-kotlin
-          build-mode: autobuild  # ⬅️ CHANGED: Auto-detects Android builds
-        - language: javascript-typescript
-          build-mode: none
-        - language: actions
-          build-mode: none
+          build-mode: manual  # Changed from autobuild to manual
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
     # ============================================
-    # ANDROID BUILD ENVIRONMENT SETUP
+    # SET UP JAVA ENVIRONMENT
     # ============================================
     - name: Set up JDK 17
-      if: matrix.language == 'java-kotlin'
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
+    # ============================================
+    # SET UP ANDROID SDK
+    # ============================================
     - name: Set up Android SDK
-      if: matrix.language == 'java-kotlin'
       uses: android-actions/setup-android@v3
 
+    # ============================================
+    # GRANT EXECUTE PERMISSION
+    # ============================================
     - name: Grant execute permission for gradlew
-      if: matrix.language == 'java-kotlin'
       run: chmod +x gradlew
 
     # ============================================
-    # CODEQL INITIALIZATION
+    # INITIALIZE CODEQL
     # ============================================
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v4
@@ -79,37 +67,22 @@ jobs:
             - '**/androidTest/**'
 
     # ============================================
-    # BUILD ANDROID APPLICATION
+    # BUILD ANDROID APP (MANUAL MODE)
     # ============================================
-    - name: Build Android App (Debug)
-      if: matrix.language == 'java-kotlin' && matrix.build-mode == 'autobuild'
+    - name: Build Android App
       run: |
+        # Remove any local Java home setting
+        if [ -f gradle.properties ]; then
+          sed -i '/org.gradle.java.home/d' gradle.properties
+        fi
+        # Build the app
         ./gradlew assembleDebug --no-daemon
         echo "✅ Android Debug APK built successfully"
 
-    - name: Build Android App (Release)
-      if: matrix.language == 'java-kotlin' && matrix.build-mode == 'manual'
-      run: |
-        ./gradlew assembleRelease --no-daemon
-        echo "✅ Android Release APK built successfully"
-
     # ============================================
-    # RUN CODEQL ANALYSIS
+    # PERFORM CODEQL ANALYSIS
     # ============================================
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
       with:
         category: "/language:${{ matrix.language }}"
-        output: codeql-results
-        upload: true
-
-    # ============================================
-    # UPLOAD SARIF RESULTS (Optional)
-    # ============================================
-    - name: Upload SARIF Results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: codeql-sarif-${{ matrix.language }}
-        path: codeql-results
-        retention-days: 30
