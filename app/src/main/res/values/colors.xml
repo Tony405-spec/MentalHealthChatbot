@@ -1,0 +1,11 @@
+<resources>
+    <color name="blanc_white">#FFFFFF</color>
+    <color name="soft_gray_shadow">#F4F6F8</color>
+    <color name="jet_black">#121212</color>
+    <color name="alabaster">#D8D2C8</color>
+    <color name="dark_card">#1E1E1E</color>
+    <color name="sage">#667761</color>
+    <color name="clay">#9D6B53</color>
+    <color name="calm_blue">#607D8B</color>
+    <color name="danger">#B3261E</color>
+</resources>

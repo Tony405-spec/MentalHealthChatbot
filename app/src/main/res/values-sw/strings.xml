@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">Msaada wa Akili</string>
+    <string name="helpline">+254 722 178177</string>
+
+    <!-- Dashboard -->
+    <string name="good_day">Siku njema</string>
+    <string name="good_morning">Habari za asubuhi</string>
+    <string name="good_afternoon">Habari za mchana</string>
+    <string name="good_evening">Habari za jioni</string>
+
+    <string-array name="wellness_quotes">
+        <item>Hatua ndogo ni muhimu leo.</item>
+        <item>Amani ni mazoezi, si mwisho wa safari.</item>
+        <item>Unaruhusiwa kuchukua nafasi yako.</item>
+        <item>Pumzi moja kwa wakati.</item>
+        <item>Kuwa mpole kwako mwenyewe, kuwa jasiri katika safari yako.</item>
+        <item>Thamani yako haijafungamanishwa na tija yako.</item>
+    </string-array>
+
+    <string name="default_quote">Hatua ndogo ni muhimu leo.</string>
+    <string name="mood_summary">Muhtasari wa Hali</string>
+    <string name="mood_summary_desc">Hali ya utulivu. Jiangalie kabla ya siku kuanza kuwa na pilkapilka nyingi.</string>
+    <string name="ai_support_chat">Mazungumzo ya AI</string>
+    <string name="journal_prompt">Jarida la Leo</string>
+    <string name="mood_analytics">Uchambuzi wa Hali</string>
+    <string name="support_us_donate">Tusaidie/Changia</string>
+    <string name="emergency_support">Msaada wa Dharura: %s</string>
+    <string name="theme_settings">Mipangilio ya Mandhari</string>
+    <string name="sign_out">Ondoka</string>
+
+    <!-- Login -->
+    <string name="login_title">Msaada wa Akili</string>
+    <string name="login_subtitle_signin">Ingia ili kuweka nafasi yako ya ustawi kuwa ya kibinafsi.</string>
+    <string name="login_subtitle_join">Jiunge na Msaada wa Akili ili kuanza safari yako ya ustawi.</string>
+    <string name="hint_name">Jina lako</string>
+    <string name="hint_email">Barua pepe</string>
+    <string name="hint_password">Nenosiri</string>
+    <string name="btn_login">Ingia</string>
+    <string name="btn_create_account">Fungua Akaunti</string>
+    <string name="toggle_new_user">Mtumiaji mpya? Fungua akaunti</string>
+    <string name="toggle_existing_user">Tayari unayo akaunti? Ingia</string>
+    <string name="err_enter_name">Tafadhali ingiza jina lako.</string>
+    <string name="err_invalid_email">Tafadhali ingiza barua pepe halali.</string>
+    <string name="err_invalid_password">Nenosiri lazima liwe na angalau herufi 6.</string>
+    <string name="err_login_fields">Tafadhali ingiza barua pepe na nenosiri.</string>
+    <string name="err_auth_failed">Barua pepe au nenosiri si sahihi.</string>
+    <string name="err_email_taken">Barua pepe hii tayari imesajiliwa.</string>
+    <string name="medical_disclaimer">Programu hii inatoa mwongozo wa kusaidia afya ya akili na maelekezo ya dharura. Haitoi utambuzi wa matibabu.</string>
+
+    <!-- Chatbot -->
+    <string name="chatbot_title">Mazungumzo ya Ustawi wa Akili</string>
+    <string name="chatbot_disclaimer">Mwongozo wa msaada, si utambuzi</string>
+    <string name="chat_welcome_title">Unajisikiaje leo?</string>
+    <string name="chat_welcome_desc">Chagua eneo la kuzingatia na nitakuongoza kupitia mtiririko wa ustawi unaosaidia.</string>
+    <string name="hint_chat">Shiriki kile kilicho akilini mwako</string>
+    <string name="typing_indicator">Msaada wa Akili unaandika…</string>
+    <string name="bot_intro">Habari, niko hapa kusaidia ustawi wako kwa maswali ya kutafakari, zana za kukabiliana na hali, na mazoezi ya utulivu. Sitambui magonjwa, lakini naweza kukusaidia kuchukua hatua tulivu ifuatayo.</string>
+    <string name="back">Nyuma</string>
+    <string name="send">Tuma</string>
+
+    <!-- Donate -->
+    <string name="donate_desc">Toa msaada kupitia M-Pesa Express. Katika matumizi halisi, ombi hili linapaswa kukamilishwa na huduma salama ya seva.</string>
+    <string name="hint_phone">Nambari ya simu mfano 254712345678</string>
+    <string name="hint_amount">Kiasi</string>
+    <string name="btn_initiate_donation">Anzisha Mchango</string>
+    <string name="connecting_mpesa">Inaunganisha na M-Pesa…</string>
+    <string name="err_invalid_phone">Hitilafu: Tumia mfumo wa 2547XXXXXXXX.</string>
+    <string name="err_invalid_amount">Hitilafu: Ingiza kiasi halali.</string>
+    <string name="payment_error">Hitilafu ya Malipo: %s</string>
+
+    <!-- Themes -->
+    <string name="theme_title">Mandhari</string>
+    <string name="theme_cream">Mandhari ya Cream</string>
+    <string name="theme_light">Mandhari Meupe</string>
+    <string name="theme_dark">Mandhari Meusi</string>
+</resources>

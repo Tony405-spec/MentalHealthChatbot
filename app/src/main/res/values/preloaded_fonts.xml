@@ -1,0 +1,5 @@
+<resources>
+    <array name="preloaded_fonts">
+        <item>@font/roboto_mono</item>
+    </array>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="fontFamily">@font/roboto_mono</item>
+        <item name="colorPrimary">@color/jet_black</item>
+        <item name="colorPrimaryContainer">@color/alabaster</item>
+        <item name="colorSecondary">@color/sage</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

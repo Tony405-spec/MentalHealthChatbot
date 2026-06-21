@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">Mindful Support</string>
+    <string name="helpline">+254 722 178177</string>
+
+    <!-- Dashboard -->
+    <string name="good_day">Good day</string>
+    <string name="good_morning">Good morning</string>
+    <string name="good_afternoon">Good afternoon</string>
+    <string name="good_evening">Good evening</string>
+
+    <string-array name="wellness_quotes">
+        <item>Small steps count today.</item>
+        <item>Peace is a practice, not a destination.</item>
+        <item>You are allowed to take up space.</item>
+        <item>One breath at a time.</item>
+        <item>Gentle with yourself, brave in your journey.</item>
+        <item>Your worth is not tied to your productivity.</item>
+    </string-array>
+
+    <string name="default_quote">Small steps count today.</string>
+    <string name="mood_summary">Mood Summary</string>
+    <string name="mood_summary_desc">Calm baseline. Check in with yourself before the day gets loud.</string>
+    <string name="ai_support_chat">AI Support Chat</string>
+    <string name="journal_prompt">Journal Prompt</string>
+    <string name="mood_analytics">Mood Analytics</string>
+    <string name="support_us_donate">Support US/Donate</string>
+    <string name="emergency_support">Emergency Support: %s</string>
+    <string name="theme_settings">Theme settings</string>
+    <string name="sign_out">Sign out</string>
+
+    <!-- Login -->
+    <string name="login_title">Mindful Support</string>
+    <string name="login_subtitle_signin">Sign in to keep your wellness space personal.</string>
+    <string name="login_subtitle_join">Join Mindful Support to start your wellness journey.</string>
+    <string name="hint_name">Your name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_create_account">Create Account</string>
+    <string name="toggle_new_user">New user? Create an account</string>
+    <string name="toggle_existing_user">Already have an account? Login</string>
+    <string name="err_enter_name">Please enter your name.</string>
+    <string name="err_invalid_email">Please enter a valid email address.</string>
+    <string name="err_invalid_password">Password must be at least 6 characters.</string>
+    <string name="err_login_fields">Please enter email and password.</string>
+    <string name="err_auth_failed">Invalid email or password.</string>
+    <string name="err_email_taken">This email is already registered.</string>
+    <string name="medical_disclaimer">This app offers supportive mental wellness guidance and emergency direction. It does not provide medical diagnosis.</string>
+
+    <!-- Chatbot -->
+    <string name="chatbot_title">Mental Wellness Chat</string>
+    <string name="chatbot_disclaimer">Supportive guidance, not diagnosis</string>
+    <string name="chat_welcome_title">How are you feeling today?</string>
+    <string name="chat_welcome_desc">Choose a focus area and I will guide you through a supportive wellness flow.</string>
+    <string name="hint_chat">Share what is on your mind</string>
+    <string name="typing_indicator">Mindful Support is typing…</string>
+    <string name="bot_intro">Hi, I am here to support your wellbeing with reflection prompts, coping tools, and grounding exercises. I do not diagnose conditions, but I can help you take a calmer next step.</string>
+    <string name="back">Back</string>
+    <string name="send">Send</string>
+
+    <!-- Donate -->
+    <string name="donate_desc">Donate through M-Pesa Express. In production, this request should be completed by a secure backend service.</string>
+    <string name="hint_phone">Phone number e.g. 254712345678</string>
+    <string name="hint_amount">Amount</string>
+    <string name="btn_initiate_donation">Initiate Donation</string>
+    <string name="connecting_mpesa">Connecting to M-Pesa…</string>
+    <string name="err_invalid_phone">Error: Use format 2547XXXXXXXX.</string>
+    <string name="err_invalid_amount">Error: Enter a valid amount.</string>
+    <string name="payment_error">Payment Error: %s</string>
+
+    <!-- Themes -->
+    <string name="theme_title">Theme</string>
+    <string name="theme_cream">Cream Wellness Theme</string>
+    <string name="theme_light">Light Theme</string>
+    <string name="theme_dark">Dark Theme</string>
+</resources>
