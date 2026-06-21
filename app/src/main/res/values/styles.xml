@@ -4,6 +4,23 @@
         <item name="android:fontFamily">@font/roboto_mono</item>
         <item name="fontFamily">@font/roboto_mono</item>
 
+        <!-- Force Font on specific components -->
+        <item name="textAppearanceDisplayLarge">@style/AppTextAppearance.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/AppTextAppearance.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/AppTextAppearance.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/AppTextAppearance.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/AppTextAppearance.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/AppTextAppearance.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/AppTextAppearance.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/AppTextAppearance.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/AppTextAppearance.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/AppTextAppearance.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/AppTextAppearance.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/AppTextAppearance.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/AppTextAppearance.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/AppTextAppearance.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/AppTextAppearance.LabelSmall</item>
+
         <!-- High Contrast Palette -->
         <item name="colorPrimary">@color/jet_black</item>
         <item name="colorPrimaryContainer">@color/soft_gray_shadow</item>
@@ -16,6 +33,28 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
     </style>
+
+    <!-- Font Appearances -->
+    <style name="AppTextAppearance.Base" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="fontFamily">@font/roboto_mono</item>
+    </style>
+
+    <style name="AppTextAppearance.DisplayLarge" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.DisplayMedium" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.DisplaySmall" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.HeadlineLarge" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.HeadlineMedium" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.HeadlineSmall" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.TitleLarge" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.TitleMedium" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.TitleSmall" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.BodyLarge" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.BodyMedium" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.BodySmall" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.LabelLarge" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.LabelMedium" parent="AppTextAppearance.Base" />
+    <style name="AppTextAppearance.LabelSmall" parent="AppTextAppearance.Base" />
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerSize">2dp</item>
