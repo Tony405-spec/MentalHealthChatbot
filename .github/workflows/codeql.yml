@@ -23,7 +23,7 @@ jobs:
       matrix:
         include:
         - language: java-kotlin
-          build-mode: manual  # Changed from autobuild to manual
+          build-mode: manual
 
     steps:
     - name: Checkout repository
@@ -45,10 +45,23 @@ jobs:
       uses: android-actions/setup-android@v3
 
     # ============================================
-    # GRANT EXECUTE PERMISSION
+    # FIX GRADLE WRAPER PERMISSIONS
     # ============================================
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Fix Gradle Wrapper Permissions
+      run: |
+        ls -la gradlew
+        chmod +x gradlew
+        ls -la gradle/wrapper/
+        # Ensure the wrapper JAR exists
+        if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+          echo "Missing gradle-wrapper.jar - downloading..."
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradle/wrapper/gradle-wrapper.jar
+        fi
+        # Ensure properties file exists
+        if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
+          echo "Missing gradle-wrapper.properties - creating..."
+          echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2-bin.zip" > gradle/wrapper/gradle-wrapper.properties
+        fi
 
     # ============================================
     # INITIALIZE CODEQL
@@ -67,7 +80,7 @@ jobs:
             - '**/androidTest/**'
 
     # ============================================
-    # BUILD ANDROID APP (MANUAL MODE)
+    # BUILD ANDROID APP
     # ============================================
     - name: Build Android App
       run: |
@@ -75,9 +88,24 @@ jobs:
         if [ -f gradle.properties ]; then
           sed -i '/org.gradle.java.home/d' gradle.properties
         fi
+        # Show current directory structure
+        echo "Current directory: $(pwd)"
+        ls -la
+        ls -la gradle/wrapper/
         # Build the app
-        ./gradlew assembleDebug --no-daemon
+        ./gradlew assembleDebug --no-daemon --stacktrace
         echo "✅ Android Debug APK built successfully"
+
+    # ============================================
+    # UPLOAD APK AS ARTIFACT (Optional - for debugging)
+    # ============================================
+    - name: Upload APK
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-apk
+        path: app/build/outputs/apk/debug/*.apk
+        retention-days: 7
 
     # ============================================
     # PERFORM CODEQL ANALYSIS
