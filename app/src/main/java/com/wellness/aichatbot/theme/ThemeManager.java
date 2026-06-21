@@ -47,29 +47,45 @@ public class ThemeManager {
         ThemePalette palette = palette(activity);
         root.setBackgroundColor(palette.background);
         
-        Typeface font = null;
+        Typeface fontRegular = null;
+        Typeface fontLight = null;
         try {
-            font = ResourcesCompat.getFont(activity, R.font.roboto_mono);
+            fontRegular = ResourcesCompat.getFont(activity, R.font.roboto_mono);
+            fontLight = ResourcesCompat.getFont(activity, R.font.roboto_mono_light);
         } catch (Exception ignored) {}
 
-        applyToChildren(root, palette, font);
+        boolean isDashboard = activity.getClass().getSimpleName().equals("MainActivity");
+
+        applyToChildren(root, palette, fontRegular, fontLight, isDashboard);
         Window window = activity.getWindow();
         window.setStatusBarColor(palette.background);
         window.setNavigationBarColor(palette.background);
         new WindowInsetsControllerCompat(window, window.getDecorView()).setAppearanceLightStatusBars(!palette.dark);
     }
 
-    private static void applyToChildren(View view, ThemePalette palette, Typeface font) {
+    private static void applyToChildren(View view, ThemePalette palette, Typeface fontRegular, Typeface fontLight, boolean isDashboard) {
         if (view instanceof TextView) {
             TextView tv = (TextView) view;
             tv.setTextColor(palette.text);
-            if (font != null) tv.setTypeface(font);
+            
+            Typeface current = tv.getTypeface();
+            boolean isBold = current != null && current.isBold();
+            
+            if (isDashboard || isBold) {
+                if (fontRegular != null) tv.setTypeface(fontRegular, isBold ? Typeface.BOLD : Typeface.NORMAL);
+            } else {
+                if (fontLight != null) tv.setTypeface(fontLight);
+            }
         }
         if (view instanceof EditText) {
             EditText editText = (EditText) view;
             editText.setTextColor(Color.rgb(18, 18, 18));
             editText.setHintTextColor(Color.rgb(96, 96, 96));
-            if (font != null) editText.setTypeface(font);
+            if (isDashboard) {
+                if (fontRegular != null) editText.setTypeface(fontRegular);
+            } else {
+                if (fontLight != null) editText.setTypeface(fontLight);
+            }
         }
         if (view instanceof MaterialCardView) {
             MaterialCardView card = (MaterialCardView) view;
@@ -80,7 +96,7 @@ public class ThemeManager {
         if (view instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) view;
             for (int i = 0; i < group.getChildCount(); i++) {
-                applyToChildren(group.getChildAt(i), palette, font);
+                applyToChildren(group.getChildAt(i), palette, fontRegular, fontLight, isDashboard);
             }
         }
     }
