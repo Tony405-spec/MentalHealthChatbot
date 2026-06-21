@@ -1,0 +1,90 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # GRADLE DEPENDENCIES (Android app)
+  - package-ecosystem: "gradle"
+    directory: "/app"  # Location of build.gradle
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Africa/Nairobi"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "android"
+      - "gradle"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    reviewers:
+      - "Tony405-spec"
+    assignees:
+      - "Tony405-spec"
+    target-branch: "main"
+    versioning-strategy: "increase"
+    groups:
+      android-dependencies:
+        patterns:
+          - "androidx.*"
+          - "com.google.android.*"
+        update-types:
+          - "patch"
+          - "minor"
+      security-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+    ignore:
+      - dependency-name: "com.android.tools.build:gradle"
+        versions:
+          - ">=8.0.0"  # Wait for stable release before upgrading
+      - dependency-name: "org.jetbrains.kotlin:kotlin-stdlib"
+        versions:
+          - ">=2.0.0"  # Kotlin 2.0 requires additional migration
+
+  # GITHUB ACTIONS (CI/CD workflows)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:30"
+      timezone: "Africa/Nairobi"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    reviewers:
+      - "Tony405-spec"
+    assignees:
+      - "Tony405-spec"
+    target-branch: "main"
+
+  #
+  # DOCKER (If you have Dockerfiles)
+  # Uncomment if you have Dockerfiles in your project
+  # - package-ecosystem: "docker"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "monday"
+  #     time: "10:00"
+  #     timezone: "Africa/Nairobi"
+  #   labels:
+  #     - "dependencies"
+  #     - "docker"
+  #   commit-message:
+  #     prefix: "docker"
+  #   reviewers:
+  #     - "Tony405-spec"
+  #   assignees:
+  #     - "Tony405-spec"
