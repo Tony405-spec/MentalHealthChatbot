@@ -45,23 +45,55 @@ jobs:
       uses: android-actions/setup-android@v3
 
     # ============================================
+    # DEBUG: SHOW REPOSITORY STRUCTURE
+    # ============================================
+    - name: Debug - Show Repository Structure
+      run: |
+        echo "=== Current Directory ==="
+        pwd
+        echo ""
+        echo "=== Root Directory Contents ==="
+        ls -la
+        echo ""
+        echo "=== Gradle Wrapper Directory ==="
+        ls -la gradle/wrapper/ || echo "gradle/wrapper/ not found!"
+        echo ""
+        echo "=== Check gradlew ==="
+        file gradlew || echo "gradlew not found!"
+        echo ""
+        echo "=== Check gradle.properties ==="
+        cat gradle.properties || echo "gradle.properties not found!"
+        echo ""
+        echo "=== Check settings.gradle ==="
+        cat settings.gradle || echo "settings.gradle not found!"
+        echo ""
+        echo "=== Check app/build.gradle ==="
+        cat app/build.gradle || echo "app/build.gradle not found!"
+
+    # ============================================
     # FIX GRADLE WRAPER PERMISSIONS
     # ============================================
     - name: Fix Gradle Wrapper Permissions
       run: |
-        ls -la gradlew
         chmod +x gradlew
-        ls -la gradle/wrapper/
         # Ensure the wrapper JAR exists
         if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
-          echo "Missing gradle-wrapper.jar - downloading..."
+          echo "⚠️ Missing gradle-wrapper.jar - downloading..."
           curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradle/wrapper/gradle-wrapper.jar
         fi
         # Ensure properties file exists
         if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
-          echo "Missing gradle-wrapper.properties - creating..."
+          echo "⚠️ Missing gradle-wrapper.properties - creating..."
           echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2-bin.zip" > gradle/wrapper/gradle-wrapper.properties
         fi
+        echo "✅ Wrapper files ready"
+
+    # ============================================
+    # TEST GRADLE WRAPER
+    # ============================================
+    - name: Test Gradle Wrapper
+      run: |
+        ./gradlew --version || echo "❌ Gradle wrapper test failed"
 
     # ============================================
     # INITIALIZE CODEQL
@@ -80,7 +112,7 @@ jobs:
             - '**/androidTest/**'
 
     # ============================================
-    # BUILD ANDROID APP
+    # BUILD ANDROID APP WITH FULL LOGGING
     # ============================================
     - name: Build Android App
       run: |
@@ -88,16 +120,22 @@ jobs:
         if [ -f gradle.properties ]; then
           sed -i '/org.gradle.java.home/d' gradle.properties
         fi
-        # Show current directory structure
-        echo "Current directory: $(pwd)"
-        ls -la
-        ls -la gradle/wrapper/
-        # Build the app
-        ./gradlew assembleDebug --no-daemon --stacktrace
-        echo "✅ Android Debug APK built successfully"
+        
+        # Build with full logging
+        echo "🔄 Starting build..."
+        ./gradlew assembleDebug --no-daemon --stacktrace --info 2>&1 | tee build.log
+        
+        # Check if build succeeded
+        if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
+          echo "✅ APK built successfully!"
+          ls -la app/build/outputs/apk/debug/
+        else
+          echo "❌ APK not found. Build failed."
+          exit 1
+        fi
 
     # ============================================
-    # UPLOAD APK AS ARTIFACT (Optional - for debugging)
+    # UPLOAD APK AS ARTIFACT
     # ============================================
     - name: Upload APK
       if: success()
