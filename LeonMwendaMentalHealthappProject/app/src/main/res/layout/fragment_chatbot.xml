@@ -1,9 +1,0 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/chatRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="16dp">
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="How are you feeling today?" android:textColor="@color/jet_black" android:textSize="23sp" android:textStyle="bold" />
-    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:scrollbars="none">
-        <com.google.android.material.chip.ChipGroup android:id="@+id/intentChips" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </HorizontalScrollView>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/chatRecycler" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:paddingTop="12dp" android:paddingBottom="8dp" />
-    <TextView android:id="@+id/typingText" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="MindCare is typing..." android:textColor="@color/muted_text" android:visibility="gone" android:padding="4dp" />
-</LinearLayout>

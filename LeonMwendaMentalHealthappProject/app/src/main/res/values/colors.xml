@@ -1,9 +1,0 @@
-<resources>
-    <color name="white">#FFFFFF</color>
-    <color name="soft_grey">#F4F6F8</color>
-    <color name="jet_black">#121212</color>
-    <color name="muted_text">#60666C</color>
-    <color name="calm_green">#B9D8CC</color>
-    <color name="calm_blue">#D8E8F8</color>
-    <color name="calm_peach">#F8DDD2</color>
-</resources>
